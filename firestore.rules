@@ -6,9 +6,9 @@ service cloud.firestore {
       allow write: if request.auth != null && request.auth.uid == userId;
     }
     match /posts/{postId} {
-      allow read: if request.auth != null;
+      allow read: if true;
       allow create: if request.auth != null && request.auth.uid == request.resource.data.userId;
-      allow update: if request.auth != null && (request.auth.uid == resource.data.userId || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['views', 'savedCount']));
+      allow update: if (request.auth != null && request.auth.uid == resource.data.userId) || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['views', 'savedCount']);
       allow delete: if request.auth != null && request.auth.uid == resource.data.userId;
     }
     match /savedPosts/{savedPostId} {

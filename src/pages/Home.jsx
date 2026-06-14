@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from '../contexts/LocationContext';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../firebase/config';
 import { collection, query, orderBy, getDocs, where, deleteDoc, addDoc, doc, serverTimestamp } from 'firebase/firestore';
@@ -13,6 +14,7 @@ const CATEGORIES = ['All', 'Study', 'Jobs', 'Rentals', 'Events', 'Coaching', 'Bu
 export default function Home() {
     const { location, requestLocation } = useLocation();
     const { currentUser } = useAuth();
+    const navigate = useNavigate();
     const [notices, setNotices] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
@@ -72,6 +74,7 @@ export default function Home() {
     const handleSaveToggle = async (postId) => {
         if (!currentUser) {
             toast.error("Please login to save notices.");
+            navigate('/login');
             return;
         }
         try {
@@ -132,6 +135,7 @@ export default function Home() {
                             <span>{location ? "Nearby You" : "Enable Location"}</span>
                         </button>
                     </div>
+                    <img src="/logo.png" alt="NoticeBoard AI" className="w-10 h-10 rounded-xl shadow-sm object-cover" />
                 </div>
 
                 {/* Search Bar */}

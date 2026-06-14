@@ -109,11 +109,21 @@ export default function NoticeDetails() {
     }
 
     const handleWhatsApp = () => {
+        if (!currentUser) {
+            toast.error("Please login to contact the publisher.");
+            navigate('/login');
+            return;
+        }
         const url = `https://wa.me/91${notice.contactNumber}?text=Hi, I saw your listing for "${notice.title}" on NoticeBoard AI.`;
         window.open(url, '_blank');
     };
 
     const handleCall = () => {
+        if (!currentUser) {
+            toast.error("Please login to contact the publisher.");
+            navigate('/login');
+            return;
+        }
         window.open(`tel:${notice.contactNumber}`);
     };
 
@@ -199,7 +209,17 @@ export default function NoticeDetails() {
 
             <div className="px-6 py-6 flex justify-between items-center text-sm text-gray-500">
                 <div>Posted by <span className="font-semibold text-gray-900">{notice.userName}</span></div>
-                <button onClick={() => setShowReportModal(true)} className="flex items-center gap-1 text-red-500 hover:underline">
+                <button 
+                    onClick={() => {
+                        if (!currentUser) {
+                            toast.error("Please login to report a notice.");
+                            navigate('/login');
+                        } else {
+                            setShowReportModal(true);
+                        }
+                    }} 
+                    className="flex items-center gap-1 text-red-500 hover:underline"
+                >
                     <AlertTriangle size={14} /> Report
                 </button>
             </div>

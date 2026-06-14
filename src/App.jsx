@@ -42,11 +42,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             
             <Route path="/" element={
-              <ProtectedRoute>
-                <Layout>
-                  <Home />
-                </Layout>
-              </ProtectedRoute>
+              <Layout>
+                <Home />
+              </Layout>
             } />
             
             <Route path="/post" element={
@@ -74,11 +72,9 @@ function App() {
             } />
             
             <Route path="/notice/:id" element={
-              <ProtectedRoute>
-                <Layout>
-                  <NoticeDetails />
-                </Layout>
-              </ProtectedRoute>
+              <Layout>
+                <NoticeDetails />
+              </Layout>
             } />
             
             <Route path="/my-posts" element={

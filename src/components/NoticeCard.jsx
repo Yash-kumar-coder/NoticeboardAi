@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom';
 import { MapPin, Clock, Bookmark, Phone, MessageCircle } from 'lucide-react';
 import { formatRelativeTime } from '../utils/date';
 import { formatDistance } from '../utils/distance';
+import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 export default function NoticeCard({ notice, distance, isSaved, onSaveToggle }) {
+    const { currentUser } = useAuth();
+    const navigate = useNavigate();
     return (
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden mb-4 p-5 relative">
             <div className="flex justify-between items-start mb-3">
@@ -46,13 +51,31 @@ export default function NoticeCard({ notice, distance, isSaved, onSaveToggle }) 
                 </div>
                 <div className="flex gap-2">
                     <button 
-                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open(`tel:${notice.contactNumber}`); }} 
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            if (!currentUser) {
+                                toast.error("Please login to contact the publisher.");
+                                navigate('/login');
+                                return;
+                            }
+                            window.open(`tel:${notice.contactNumber}`);
+                        }} 
                         className="bg-gray-100 text-gray-700 p-2 rounded-xl hover:bg-gray-200 transition-colors"
                     >
                         <Phone size={18} />
                     </button>
                     <button 
-                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open(`https://wa.me/91${notice.contactNumber}?text=Hi, I saw your listing for "${notice.title}" on NoticeBoard AI.`, '_blank'); }} 
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            if (!currentUser) {
+                                toast.error("Please login to contact the publisher.");
+                                navigate('/login');
+                                return;
+                            }
+                            window.open(`https://wa.me/91${notice.contactNumber}?text=Hi, I saw your listing for "${notice.title}" on NoticeBoard AI.`, '_blank');
+                        }} 
                         className="bg-primary text-white px-4 py-2 rounded-xl font-medium text-sm hover:bg-primary-dark transition-colors shadow-sm shadow-primary/20 flex items-center gap-1.5"
                     >
                         <MessageCircle size={18} /> WhatsApp
