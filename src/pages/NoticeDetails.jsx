@@ -182,6 +182,14 @@ export default function NoticeDetails() {
                 </div>
             </div>
 
+            {notice.imageUrl && (
+                <div className="px-6 pt-2 pb-6 border-b border-gray-100">
+                    <div className="w-full rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 flex items-center justify-center">
+                        <img src={notice.imageUrl} alt="Notice" className="w-full h-auto object-contain max-h-[60vh]" />
+                    </div>
+                </div>
+            )}
+
             <div className="px-6 py-6 border-b border-gray-100">
                 <h3 className="font-bold text-lg text-gray-900 mb-3">Description</h3>
                 <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">

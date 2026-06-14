@@ -20,15 +20,24 @@ export default function NoticeCard({ notice, distance, isSaved, onSaveToggle }) 
             </div>
             
             <Link to={`/notice/${notice.id}`} className="block">
-                <h3 className="font-semibold text-lg text-gray-900 mb-1 leading-tight line-clamp-2">
-                    {notice.title}
-                </h3>
-                <p className="text-gray-500 text-sm mb-3 line-clamp-1">
-                    {notice.locationName}
-                </p>
-                <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                    {notice.description}
-                </p>
+                <div className="flex gap-4 mb-4">
+                    <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-lg text-gray-900 mb-1 leading-tight line-clamp-2">
+                            {notice.title}
+                        </h3>
+                        <p className="text-gray-500 text-sm mb-2 line-clamp-1">
+                            {notice.locationName}
+                        </p>
+                        <p className="text-gray-600 text-sm line-clamp-2">
+                            {notice.description}
+                        </p>
+                    </div>
+                    {notice.imageUrl && (
+                        <div className="w-20 h-20 shrink-0 rounded-xl overflow-hidden bg-gray-50 border border-gray-100 flex items-center justify-center">
+                            <img src={notice.imageUrl} alt="" className="w-full h-full object-cover" />
+                        </div>
+                    )}
+                </div>
             </Link>
             
             <div className="flex items-center justify-between mt-2 pt-4 border-t border-gray-50">
