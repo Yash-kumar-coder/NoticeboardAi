@@ -167,7 +167,7 @@ export default function NoticeDetails() {
                         <Clock size={14} /> {formatRelativeTime(notice.createdAt)}
                     </span>
                     <span className="text-gray-500 text-sm flex items-center gap-1 ml-auto">
-                        <Eye size={14} /> {notice.views || 0} views
+                        <Eye size={14} /> {notice.views || 0} 
                     </span>
                 </div>
 
