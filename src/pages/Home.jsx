@@ -135,7 +135,7 @@ export default function Home() {
                             <span>{location ? "Nearby You" : "Enable Location"}</span>
                         </button>
                     </div>
-                    <img src="/logo.png" alt="NoticeBoard AI" className="w-10 h-10 rounded-xl shadow-sm object-cover" />
+                    <img src="/logo.png" alt="NoticeBoard AI" className="w-15 h-15 rounded-xl shadow-sm object-cover" />
                 </div>
 
                 {/* Search Bar */}
