@@ -114,7 +114,7 @@ export default function NoticeDetails() {
             navigate('/login');
             return;
         }
-        const url = `https://wa.me/91${notice.contactNumber}?text=Hi, I saw your listing for "${notice.title}" on NoticeBoard AI.`;
+        const url = `https://wa.me/91${notice.contactNumber}?text=Hi, I saw your listing for "${notice.title}" on NearNotice.`;
         window.open(url, '_blank');
     };
 
