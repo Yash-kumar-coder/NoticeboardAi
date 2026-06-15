@@ -74,7 +74,7 @@ export default function NoticeCard({ notice, distance, isSaved, onSaveToggle }) 
                                 navigate('/login');
                                 return;
                             }
-                            window.open(`https://wa.me/91${notice.contactNumber}?text=Hi, I saw your listing for "${notice.title}" on NoticeBoard AI.`, '_blank');
+                            window.open(`https://wa.me/91${notice.contactNumber}?text=Hi, I saw your listing for "${notice.title}" on NearNotice.`, '_blank');
                         }} 
                         className="bg-primary text-white px-4 py-2 rounded-xl font-medium text-sm hover:bg-primary-dark transition-colors shadow-sm shadow-primary/20 flex items-center gap-1.5"
                     >
