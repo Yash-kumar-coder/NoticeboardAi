@@ -60,7 +60,7 @@ export default function Login() {
                 <div className="bg-primary/10 p-4 rounded-full mb-4 text-primary">
                     <MapPin size={40} />
                 </div>
-                <h1 className="text-2xl font-bold text-gray-900">NoticeBoard AI</h1>
+                <h1 className="text-2xl font-bold text-gray-900">NearNotice</h1>
                 <p className="text-gray-500 text-sm mt-1 text-center">Discover local notices in your community</p>
             </div>
 
