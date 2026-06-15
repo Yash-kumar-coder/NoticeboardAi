@@ -181,7 +181,7 @@ export default function Profile() {
                         { 
                             icon: Info, 
                             label: 'About App', 
-                            onClick: () => toast('NoticeBoard AI v1.0.0 MVP', { icon: 'ℹ️' }) 
+                            onClick: () => toast('NearNotice v1.0.0 MVP', { icon: 'ℹ️' }) 
                         }
                     ].map((item, idx, arr) => (
                         <button 
